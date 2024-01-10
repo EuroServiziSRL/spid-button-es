@@ -436,10 +436,34 @@ jQuery &&
     // This script populate the SPID button with a remote json or the `idps` var content
     //var queryURL = "js/JSON_IDP_list_EXAMPLE.json";
     var queryURL = "https://registry.spid.gov.it/entities-idp?&output=json&custom=info_display_base";
-    var idps = [{"organization_name": "ArubaPEC S.p.A.", "entity_id": "https://loginspid.aruba.it", "logo_uri": "img/spid-idp-arubaid.svg"},{"organization_name": "InfoCert S.p.A.", "entity_id": "https://identity.infocert.it", "logo_uri": "img/spid-idp-infocertid.svg"},{"organization_name": "IN.TE.S.A. S.p.A.", "entity_id": "https://spid.intesa.it", "logo_uri": "img/spid-idp-intesaid.svg"},{"organization_name": "Lepida S.p.A.", "entity_id": "https://id.lepida.it/idp/shibboleth", "logo_uri": "img/spid-idp-lepidaid.svg"},{"organization_name": "Namirial", "entity_id": "https://idp.namirialtsp.com/idp", "logo_uri": "img/spid-idp-namirialid.svg"},{"organization_name": "Poste Italiane SpA", "entity_id": "https://posteid.poste.it", "logo_uri": "img/spid-idp-posteid.svg"},{"organization_name": "Sielte S.p.A.", "entity_id": "https://identity.sieltecloud.it", "logo_uri": "img/spid-idp-sielteid.svg"},{"organization_name": "Register.it S.p.A.", "entity_id": "https://spid.register.it", "logo_uri": "img/spid-idp-spiditalia.svg"},{"organization_name": "TI Trust Technologies srl", "entity_id": "https://login.id.tim.it/affwebservices/public/saml2sso", "logo_uri": "img/spid-idp-timid.svg"},{"organization_name": "TeamSystem s.p.a.", "entity_id": "https://spid.teamsystem.com/idp", "logo_uri": "img/spid-idp-teamsystemid.svg"},{"organization_name": "EtnaHitech S.C.p.A.", "entity_id": "https://id.eht.eu", "logo_uri": "img/spid-idp-etnaid.svg"}]
-    
-    const entity_id_map = {"https://loginspid.aruba.it" : "arubaid","https://identity.infocert.it" : "infocert", "https://spid.intesa.it" : "intesa", "https://id.lepida.it/idp/shibboleth" : "lepida", "https://idp.namirialtsp.com/idp" : "namirialid", "https://posteid.poste.it": "poste", "https://identity.sieltecloud.it" : "sielte", "https://spid.register.it" : "spiditalia", "https://spid.teamsystem.com/idp" : "teamsystemid","https://login.id.tim.it/affwebservices/public/saml2sso" : "tim","https://id.eht.eu" : "etnahitech"}
-    
+    var idps = [{"organization_name": "ArubaPEC S.p.A.", "entity_id": "https://loginspid.aruba.it", "logo_uri": "img/spid-idp-arubaid.svg"},
+                            {"organization_name": "InfoCert S.p.A.", "entity_id": "https://identity.infocert.it", "logo_uri": "img/spid-idp-infocertid.svg"},
+                            {"organization_name": "IN.TE.S.A. S.p.A.", "entity_id": "https://spid.intesa.it", "logo_uri": "img/spid-idp-intesaid.svg"},
+                            {"organization_name": "Lepida S.p.A.", "entity_id": "https://id.lepida.it/idp/shibboleth", "logo_uri": "img/spid-idp-lepidaid.svg"},
+                            {"organization_name": "Namirial", "entity_id": "https://idp.namirialtsp.com/idp", "logo_uri": "img/spid-idp-namirialid.svg"},
+                            {"organization_name": "Poste Italiane SpA", "entity_id": "https://posteid.poste.it", "logo_uri": "img/spid-idp-posteid.svg"},
+                            {"organization_name": "Sielte S.p.A.", "entity_id": "https://identity.sieltecloud.it", "logo_uri": "img/spid-idp-sielteid.svg"},
+                            {"organization_name": "Register.it S.p.A.", "entity_id": "https://spid.register.it", "logo_uri": "img/spid-idp-spiditalia.svg"},
+                            {"organization_name": "TI Trust Technologies srl", "entity_id": "https://login.id.tim.it/affwebservices/public/saml2sso", "logo_uri": "img/spid-idp-timid.svg"},
+                            {"organization_name": "TeamSystem s.p.a.", "entity_id": "https://spid.teamsystem.com/idp", "logo_uri": "img/spid-idp-teamsystemid.svg"},
+                            {"organization_name": "EtnaHitech S.C.p.A.", "entity_id": "https://id.eht.eu", "logo_uri": "img/spid-idp-etnaid.svg"},
+                            {"organization_name": "InfoCamere S.C.p.A.", "entity_id": "https://loginspid.infocamere.it", "logo_uri": "img/spid-idp-infocamereid.svg"},
+                            {"organization_name": "Intesi Group S.p.A.", "entity_id": "https://idp.intesigroup.com", "logo_uri": "img/spid-idp-intesigroupspid.svg"}]
+                
+    const entity_id_map = {"https://loginspid.aruba.it" : "arubaid",
+                                      "https://identity.infocert.it" : "infocert",
+                                      "https://spid.intesa.it" : "intesa",
+                                      "https://id.lepida.it/idp/shibboleth" : "lepida",
+                                      "https://idp.namirialtsp.com/idp" : "namirialid",
+                                      "https://posteid.poste.it": "poste",
+                                      "https://identity.sieltecloud.it" : "sielte",
+                                      "https://spid.register.it" : "spiditalia",
+                                      "https://spid.teamsystem.com/idp" : "teamsystemid",
+                                      "https://login.id.tim.it/affwebservices/public/saml2sso" : "tim",
+                                      "https://id.eht.eu" : "etnahitech",
+                                      "https://loginspid.infocamere.it" : "infocamere",
+                                      "https://idp.intesigroup.com" : "intesi"}
+                
     // spid_populate function, if '.spid-button[data-spid-remote] ul' exist, try to get the remote json file and pupulate all spid buttons
     function spid_populate(url_da_config) {
         let spid_elements = document.querySelectorAll('ul[data-spid-remote]')
